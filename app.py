@@ -29,17 +29,17 @@ index_page = html.Div(
     html.Br(),
     html.Br(),
     html.Br(),
-    html.H1("COVID Impact on Hospitals and Communities (USA)", style={'text-align': 'center','color':'#60a7e0'}),
+    html.H1("Effective and New Evaluation of COVID-19 Impact", style={'text-align': 'center'}),
     html.Br(),
     html.Br(),
     html.Br(),
     html.Br(),
     html.Br(),
-    dcc.Link('Detail', href='/detail', style={'font-size': '30px', 'font-family': 'Times New Roman, Times, serif', 'font-weight': 'bold',
-                                              'justify-content': 'center', 'display': 'flex','color':'#60a7e0'}),
+    dcc.Link('Introduction', href='/detail', style={'font-size': '30px', 'font-family': 'Times New Roman, Times, serif', 'font-weight': 'bold',
+                                              'justify-content': 'center', 'display': 'flex'}),
     html.Br(),
     dcc.Link('Insights', href='/page_1', style={'font-size': '30px', 'font-family': 'Times New Roman, Times, serif', 'font-weight': 'bold',
-                                              'justify-content': 'center', 'display': 'flex','color':'#60a7e0'}),
+                                              'justify-content': 'center', 'display': 'flex'}),
     html.Br(),
     html.Br(),
     #html.A(style={'textAlign': 'center'}, children=[html.Span('Haoda Song', style={'textAlign': 'center'})], className="row", href='https://www.linkedin.com/in/haoda-song/'),
@@ -47,15 +47,14 @@ index_page = html.Div(
     html.Br(),
     html.Br(),
     html.Br(),
-    html.Br(),
-    html.H3("Authors: Haoda Song | Siyuan Li", style={'text-align': 'center','color':'#60a7e0'})
+    html.H3("Authors: Haoda Song | Siyuan Li", style={'text-align': 'center'})
 ])
 
 
 page_1_layout = page_1.layout
 
 
-detail_layout = html.Div([detail.detail_header(), detail.detail_page()])
+detail_layout = html.Div([detail.detail_page()])
 
 @app.callback(dash.dependencies.Output('page-content', 'children'),
               [dash.dependencies.Input('url', 'pathname')])

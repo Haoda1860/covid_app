@@ -86,7 +86,11 @@ layout = html.Div(children=[
     html.Br(),
 
     html.Div([
-        html.H2(["Map Title"]),
+        html.H2(["Map plot of US Covid daily Statistics"]),
+          dcc.Markdown(''' 
+        ###### The plot reflects the latest daily covid statistical summary for each state. 
+         
+        '''),
         dcc.Dropdown(id='map_value', value='actuals.newCases',options=[{'label': "New Case Today", 'value': 'actuals.newCases'},
         {'label': "New Death Today", 'value': 'actuals.newDeaths'}, {'label': "Current Risk Level", 'value': 'riskLevels.overall'}, 
         {'label': "HospitalBeds Usage", 'value': 'actuals.hospitalBeds.currentUsageTotal'}, {'label': "HospitalBeds Capacity", 'value': 'actuals.hospitalBeds.capacity'}]),
@@ -99,7 +103,10 @@ layout = html.Div(children=[
     html.Br(),
 
     html.Div([
-        html.H2("Rt Title"),
+        html.H2("Line plot for Covid Rt trend"),
+        dcc.Markdown('''
+        ###### R_t: The estimated number of infections arising from a typical case. The plot reflects the history of covid's infection rate for each state. Choose a state to show the line trend of infection rate. 
+        '''),
         dcc.Dropdown(id='state_rt', value='state', options=[{'label': x, 'value': x} for x in rt_us['state'].unique()], multi=True),
         dcc.Graph(id='rt_lines')]
         ),
@@ -110,7 +117,11 @@ layout = html.Div(children=[
     html.Br(),
 
     html.Div([
-        html.H2("Vaccienation Area Chart Title"),
+        html.H2("Line plot for Covid Vaccination"),
+        dcc.Markdown(''' 
+        ###### The plot reflects the historical trend of vaccination completed ratio for each state. 
+         
+        '''),
         dcc.Dropdown(id='state_vac', value='state', options=[{'label': x, 'value': x} for x in vac_us['state'].unique()], multi=True),
         dcc.Graph(id='vac_area')]
         ),
@@ -154,7 +165,7 @@ def register_callbacks(app):
                 x=data['date'], y=data['mean'],
                 mode='lines',
                 name=v))
-        fig.update_layout()
+        fig.update_layout(yaxis_title="Infection Rate (R_t)")
         return fig
 
     #vac callback
@@ -172,7 +183,7 @@ def register_callbacks(app):
                 mode='lines',
                 name=v,
                 stackgroup='one'))
-        fig.update_layout()
+        fig.update_layout(yaxis_title="Vaccination Rate")
         return fig
     
 if __name__ == '__main__':
