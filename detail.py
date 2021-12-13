@@ -15,7 +15,7 @@ def detail_page():
     """
     return html.Div(children=[dcc.Markdown('''
         ### Project Summary
-        The website is witten by Python Dash to visualize our insights and analysis and deployed by Google Cloud Platform with Cron jobs to update the website everyday at ??? time EST.
+        The website is witten by Python Dash to visualize our insights and analysis.
         The big idea of this project is to summarize and analyze the potential impact of covid 19 for each community in the United States.        
         The project is consisting of:
         1. Collecting stock price information from open source covid API.     
